@@ -19,3 +19,9 @@ redsend [redsend.org](http://www.redsend.org/ "My personal blog")
 1. Upload the directory `CHAPSecureLogin` to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Have fun!!
+
+
+== Frequently Asked Questions ==
+
+
+== Screenshots ==
