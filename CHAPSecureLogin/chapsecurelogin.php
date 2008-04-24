@@ -3,7 +3,7 @@
 Plugin Name: Chap Secure Login
 Plugin URI: http://www.redsend.org/chapsecurelogin/
 Description: Do not show password, during login, on an insecure channel (without SSL).
-Version: 1.0
+Version: 1.4
 Author: Enrico Rossomando (redsend)
 Author URI: http://www.redsend.org
 */
@@ -25,13 +25,25 @@ Author URI: http://www.redsend.org
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-function generate_challenge_and_javascript(){
+function chap_plugin_loaded(){
 
 	session_start();
-
-	if(!isset($_SESSION['challenge']))
-		$_SESSION['challenge']=md5(rand(1,100000));
+	
+	if (!isset($_SESSION['dochap']))
+		$_SESSION['dochap'] = 1;
 		
+	if (!isset($_SESSION['challenge']))
+		$_SESSION['challenge']=md5(rand(1,100000));
+
+}
+
+add_action('plugins_loaded', 'chap_plugin_loaded');
+
+
+function generate_javascript(){
+	
+	if (isset($_SESSION['dochap']) && $_SESSION['dochap'] == 1){
+	
 	?>
 	
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl');?>/wp-content/plugins/CHAPSecureLogin/md5.js" ></script>
@@ -53,13 +65,17 @@ function generate_challenge_and_javascript(){
 	</script>
 	
 	<?php
+	
+	}
 }
 
-add_action('login_head', 'generate_challenge_and_javascript');
+add_action('login_head', 'generate_javascript');
 
 
 
 function integrate_CHAP_login_form(){
+
+	if (isset($_SESSION['dochap']) && $_SESSION['dochap'] == 1){
 
 	?>
 	
@@ -69,47 +85,94 @@ function integrate_CHAP_login_form(){
 	</script>
 	
 	<?php
+	
+	} else {
+	
+	?>
+	
+	<script language="javascript" type="text/javascript">
+		alert("CAUTION!!! Password is sent unencrypted.");
+	</script>
+	
+	<?php
+	
+	}
 
 }
 
 add_action('login_form', 'integrate_CHAP_login_form');
 
 
-
-if( !function_exists('wp_login') ) :
-function wp_login($username, $password, $already_md5 = false){
-	global $wpdb, $error;
-
-	if ( '' == $username )
-		return false;
-
-	if ( '' == $password ) {
-		$error = __('<strong>ERROR</strong>: The password field is empty.');
-		return false;
-	}
-
-	$login = get_userdatabylogin($username);
-	//$login = $wpdb->get_row("SELECT ID, user_login, user_pass FROM $wpdb->users WHERE user_login = '$username'");
-
-	if (!$login) {
-		$error = __('<strong>ERROR</strong>: Invalid username.');
-		return false;
-	} else {
+if ( ! function_exists('wp_check_password') ):
+/**
+ * wp_check_password() - Checks the plaintext password against the encrypted Password
+ *
+ * Maintains compatibility between old version and the new cookie
+ * authentication protocol using PHPass library. The $hash parameter
+ * is the encrypted password and the function compares the plain text
+ * password when encypted similarly against the already encrypted
+ * password to see if they match.
+ *
+ * For integration with other applications, this function can be
+ * overwritten to instead use the other package password checking
+ * algorithm.
+ *
+ * @since 2.5
+ * @global object $wp_hasher PHPass object used for checking the password
+ *	against the $hash + $password
+ * @uses PasswordHash::CheckPassword
+ *
+ * @param string $password Plaintext user's password
+ * @param string $hash Hash of the user's password to check against.
+ * @return bool False, if the $password does not match the hashed password
+ */
+function wp_check_password($password, $hash, $user_id = '') {
 	
-		session_start();
-		
-		if ( 	($already_md5 && md5(md5(md5($login->user_pass.$_SESSION['challenge']))) == $password) || 
-			($login->user_login == $username && md5($login->user_pass.$_SESSION['challenge']) == $password) ) {
-			return true;
-		} else {
-			$error = __('<strong>ERROR</strong>: Incorrect password.');
-			$pwd = '';
+	// If the hash was updated to the new hash before this plugin
+	// was installed, rehash as md5.
+	if ( strlen($hash) > 32 ) {
+	
+		if ($_SESSION['dochap'] == 1) {
+			$_SESSION['dochap'] = 0;
 			return false;
 		}
+		
+		global $wp_hasher;
+		if ( empty($wp_hasher) ) {
+			require_once( ABSPATH . 'wp-includes/class-phpass.php');
+			$wp_hasher = new PasswordHash(8, TRUE);
+		}
+		$check = $wp_hasher->CheckPassword($password, $hash);
+		if ( $check && $user_id ) {
+			// Rehash using new hash.
+			wp_set_password($password, $user_id);
+			$user = get_userdata($user_id);
+			$hash = $user->user_pass;
+		}
+
+		$_SESSION['dochap'] = 1;
+
+		return apply_filters('check_password', $check, $password, $hash, $user_id);
 	}
+
+	$check = ( md5($hash.$_SESSION['challenge']) == $password );
+
+	return apply_filters('check_password', $check, $password, $hash, $user_id);
 }
 endif;
 
+
+if ( !function_exists('wp_hash_password') ):
+/**
+ * wp_hash_password() - Create a hash (encrypt) of a plain text password
+ *
+ * @param string $password Plain text user password to hash
+ * @return string The hash string of the password
+ */
+function wp_hash_password($password) {
+	return md5($password);
+}
+endif;
 
 
 function destroy_CHAP_challenge(){
