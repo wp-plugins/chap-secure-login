@@ -81,7 +81,7 @@ function integrate_CHAP_login_form(){
 	
 	<script language="javascript" type="text/javascript">
 		var form_login = document.getElementById('loginform');
-		form_login.setAttribute('onsubmit','return doCHAP();')
+		form_login.onsubmit = function (){ return doCHAP();};
 	</script>
 	
 	<?php
