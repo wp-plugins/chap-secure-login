@@ -3,7 +3,7 @@
 Plugin Name: Chap Secure Login
 Plugin URI: http://www.redsend.org/chapsecurelogin/
 Description: Do not show password, during login, on an insecure channel (without SSL).
-Version: 1.3
+Version: 1.4
 Author: Enrico Rossomando (redsend)
 Author URI: http://www.redsend.org
 */
