@@ -3,8 +3,8 @@ Contributors: redsend
 Donate link: http://www.redsend.org/
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt 
 Requires at least: 2.5
-Tested up to: 2.7
-Stable tag: 1.4
+Tested up to: 2.7.1
+Stable tag: 1.5
 
 Do not show password, during login, on an insecure channel (without SSL)
 
@@ -22,3 +22,11 @@ redsend [redsend.org](http://www.redsend.org/ "My personal blog")
 1. Upload the directory `CHAPSecureLogin` to the `/wp-content/plugins/` directory (Example: /wp-content/plugins/CHAPSecureLogin/ )
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. After this, have fun!!
+
+== Change Log ==
+
+Version 1.5
+
+*  Fixed bug "login failed" with XMLRPC API used by many software like Windows Live Writer
+*  Added "Change Log" section :)
+

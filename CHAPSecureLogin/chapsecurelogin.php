@@ -3,7 +3,7 @@
 Plugin Name: Chap Secure Login
 Plugin URI: http://www.redsend.org/chapsecurelogin/
 Description: Do not show password, during login, on an insecure channel (without SSL).
-Version: 1.4
+Version: 1.5
 Author: Enrico Rossomando (redsend)
 Author URI: http://www.redsend.org
 */
@@ -31,6 +31,9 @@ function chap_plugin_loaded(){
 	
 	if (!isset($_SESSION['dochap']))
 		$_SESSION['dochap'] = 1;
+	
+	if (defined("XMLRPC_REQUEST") && XMLRPC_REQUEST == true)
+		$_SESSION['dochap'] = 0;
 		
 	if (!isset($_SESSION['challenge']))
 		$_SESSION['challenge']=md5(rand(1,100000));
@@ -155,7 +158,10 @@ function wp_check_password($password, $hash, $user_id = '') {
 		return apply_filters('check_password', $check, $password, $hash, $user_id);
 	}
 
-	$check = ( md5($hash.$_SESSION['challenge']) == $password );
+	if ($_SESSION['dochap'] == 1)
+		$check = ( md5($hash.$_SESSION['challenge']) == $password );
+	else
+		$check = ( $hash == md5($password) );
 
 	return apply_filters('check_password', $check, $password, $hash, $user_id);
 }
