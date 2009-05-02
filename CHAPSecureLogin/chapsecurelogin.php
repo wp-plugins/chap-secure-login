@@ -8,7 +8,7 @@ Author: Enrico Rossomando (redsend)
 Author URI: http://www.redsend.org
 */
 
-/*  Copyright 2007  Enrico Rossomando (email : redsend@gmail.com)
+/*  Copyright 2007-2009  Enrico Rossomando (email : redsend@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
