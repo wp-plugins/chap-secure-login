@@ -4,7 +4,7 @@ Donate link: http://www.redsend.org/
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt 
 Requires at least: 2.5
 Tested up to: 2.7.1
-Stable tag: 1.5
+Stable tag: 1.5.1
 
 Do not show password, during login, on an insecure channel (without SSL)
 
@@ -24,6 +24,10 @@ redsend [redsend.org](http://www.redsend.org/ "My personal blog")
 3. After this, have fun!!
 
 == Change Log ==
+
+Version 1.5.1
+
+*  Fixed javascript bug "hex_md5() not found!"
 
 Version 1.5
 
