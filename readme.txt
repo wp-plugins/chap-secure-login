@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: redsend
-Donate link: http://www.redsend.org/
+Donate link: http://www.redsend.org
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt 
 Requires at least: 2.5
 Tested up to: 2.7.1
