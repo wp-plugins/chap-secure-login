@@ -3,7 +3,7 @@ Contributors: redsend
 Donate link: http://www.redsend.org
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt 
 Requires at least: 2.5
-Tested up to: 2.9.1
+Tested up to: 2.9.2
 Stable tag: 1.5.2
 
 Do not show password, during login, on an insecure channel (without SSL)
