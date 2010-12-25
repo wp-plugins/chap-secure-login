@@ -3,12 +3,12 @@
 Plugin Name: Chap Secure Login
 Plugin URI: http://www.redsend.org/chapsecurelogin/
 Description: Do not show password, during login, on an insecure channel (without SSL).
-Version: 1.5.2
+Version: 1.5.3
 Author: Enrico Rossomando (redsend)
 Author URI: http://www.redsend.org
 */
 
-/*  Copyright 2007-2010  Enrico Rossomando (email : redsend@gmail.com)
+/*  Copyright 2007-2011  Enrico Rossomando (email : redsend@gmail.com)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -184,7 +184,9 @@ endif;
 
 
 function destroy_CHAP_challenge(){
-	session_start();
+	if(is_null(session_name())){
+		session_start();
+ 	}
 	unset($_SESSION['challenge']);
 }
 
