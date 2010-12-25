@@ -3,8 +3,8 @@ Contributors: redsend
 Donate link: http://www.redsend.org
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt 
 Requires at least: 2.5
-Tested up to: 2.7.1
-Stable tag: 1.5.1
+Tested up to: 3.0.3
+Stable tag: 1.5.3
 
 Do not show password, during login, on an insecure channel (without SSL)
 
@@ -19,11 +19,15 @@ redsend [redsend.org](http://www.redsend.org/ "My personal blog")
 
 == Installation ==
 
-1. Upload the directory `CHAPSecureLogin` to the `/wp-content/plugins/` directory (Example: /wp-content/plugins/CHAPSecureLogin/ )
+1. Upload the directory `chap-secure-login` to the `/wp-content/plugins/` directory (Example: /wp-content/plugins/chap-secure-login/ )
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. After this, have fun!!
 
 == Change Log ==
+
+Version 1.5.2
+
+*  Nothing special, just an icon to notify the encryption password!
 
 Version 1.5.1
 
