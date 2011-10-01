@@ -2,8 +2,8 @@
 /*
 Plugin Name: Chap Secure Login
 Plugin URI: http://www.redsend.org/chapsecurelogin/
-Description: Do not show password, during login, on an insecure channel (without SSL).
-Version: 1.5.3
+Description: Do not show password, during login, on an insecure channel (without SSL) (SHA-256 encryption).
+Version: 1.6
 Author: Enrico Rossomando (redsend)
 Author URI: http://www.redsend.org
 */
@@ -49,6 +49,7 @@ function generate_javascript(){
 	
 	?>
 	
+	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/js/sha256.js" ></script>
 	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/js/md5.js" ></script>
 	<script language="javascript" type="text/javascript">
 		function doCHAP (){
@@ -61,7 +62,9 @@ function generate_javascript(){
 			
 			var password = psw.value;
 			
-			psw.value=hex_md5(hex_md5(password)+'<?php echo $_SESSION['challenge']?>');
+			var shaObj = new jsSHA(hex_md5(password)+'<?php echo $_SESSION['challenge']?>',"ASCII");
+			psw.value = shaObj.getHash("SHA-256", "HEX");
+			
 			return true;
 		
 		}
@@ -161,7 +164,7 @@ function wp_check_password($password, $hash, $user_id = '') {
 	}
 
 	if ($_SESSION['dochap'] == 1)
-		$check = ( md5($hash.$_SESSION['challenge']) == $password );
+		$check = ( hash("sha256", $hash.$_SESSION['challenge']) == $password );
 	else
 		$check = ( $hash == md5($password) );
 
@@ -191,5 +194,3 @@ function destroy_CHAP_challenge(){
 }
 
 add_action('wp_logout', 'destroy_CHAP_challenge');
-
-?>
