@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Chap Secure Login
-Plugin URI: http://www.redsend.org/chapsecurelogin/
+Plugin URI: http://mrred.it/chapsecurelogin/
 Description: Do not show password, during login, on an insecure channel (without SSL) (SHA-256 encryption).
 Version: 1.6
 Author: Enrico Rossomando (redsend)
-Author URI: http://www.redsend.org
+Author URI: http://mrred.it
 */
 
 /*  Copyright 2007-2011  Enrico Rossomando (email : redsend@gmail.com)
@@ -85,7 +85,7 @@ function integrate_CHAP_login_form(){
 
 	?>
 	
-	<a style="border-width:0px;text-decoration:none;" href="http://www.redsend.org/chapsecurelogin/" title="More info..."><img style="border-width:0px;text-decoration:none;height:20px;width:20px;position:relative;float:left;margin-top:-75px;margin-left:70px;" alt="> Encryption password!" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/lock.png"></a>
+	<a style="border-width:0px;text-decoration:none;" href="http://mrred.it/chapsecurelogin/" title="More info..."><img style="border-width:0px;text-decoration:none;height:20px;width:20px;position:relative;float:left;margin-top:-75px;margin-left:70px;" alt="> Encryption password!" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/lock.png"></a>
 	
 	<script language="javascript" type="text/javascript">
 		var form_login = document.getElementById('loginform');
