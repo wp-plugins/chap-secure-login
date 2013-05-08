@@ -1,10 +1,10 @@
 === Plugin Name ===
-Contributors: redsend
-Donate link: http://www.redsend.org
+Contributors: Enrico Rossomando (redsend || mrred || mrredsend)
+Donate link: http://mrred.it
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt, md5, sha 
 Requires at least: 2.5
-Tested up to: 3.2
-Stable tag: 1.6
+Tested up to: 3.5
+Stable tag: 1.6.1
 
 Do not show password, during login, on an insecure channel (without SSL). Use a SHA-256 hash algorithm.
 
@@ -15,7 +15,7 @@ In the first login there will be an error, but don't worry is only a tecnical er
 If you want more details about this algorithm, check <a href="http://www.devarticles.com/c/a/JavaScript/Building-a-CHAP-Login-System-An-ObjectOriented-Approach/">"Building a CHAP Login System"</a>. 
 This is a zero-configuration plugin. 
 
-redsend [redsend.org](http://www.redsend.org/ "My personal blog")
+Enrico Rossomando (redsend || mrred || mrredsend) this is my blog about programming, gaming and startup > [mrred.it](http://mrred.it/ "Blog about programming, gaming and startup")
 
 == Installation ==
 
@@ -24,6 +24,10 @@ redsend [redsend.org](http://www.redsend.org/ "My personal blog")
 3. After this, have fun!!
 
 == Change Log ==
+
+Version 1.6.1
+
+* Change author information
 
 Version 1.6
 
