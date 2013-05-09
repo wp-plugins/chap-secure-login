@@ -3,7 +3,7 @@
 Plugin Name: Chap Secure Login
 Plugin URI: http://mrred.it/chapsecurelogin/
 Description: Do not show password, during login, on an insecure channel (without SSL) (SHA-256 encryption).
-Version: 1.6
+Version: 1.6.1
 Author: Enrico Rossomando (redsend)
 Author URI: http://mrred.it
 */

@@ -1,5 +1,5 @@
 === Plugin Name ===
-Contributors: Enrico Rossomando (redsend || mrred || mrredsend)
+Contributors: Enrico Rossomando
 Donate link: http://mrred.it
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt, md5, sha 
 Requires at least: 2.5
