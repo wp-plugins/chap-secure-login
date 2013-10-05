@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: Enrico Rossomando
-Donate link: http://mrred.it
+Donate link: http://www.mrred.it/chap-secure-login-a-wordpress-plugin-for-secure-password-authentication/
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt, md5, sha 
 Requires at least: 2.5
-Tested up to: 3.5
-Stable tag: 1.6.1
+Tested up to: 3.6.1
+Stable tag: 1.6.2
 
 Do not show password, during login, on an insecure channel (without SSL). Use a SHA-256 hash algorithm.
 
@@ -24,6 +24,10 @@ Enrico Rossomando (redsend || mrred || mrredsend) this is my blog about programm
 3. After this, have fun!!
 
 == Change Log ==
+
+Version 1.6.2
+
+* Change plugin website url
 
 Version 1.6.1
 
