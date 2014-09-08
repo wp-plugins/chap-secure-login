@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Chap Secure Login
+Plugin Name: Chap Secure Password Login
 Plugin URI: http://www.mrred.it/chap-secure-login-a-wordpress-plugin-for-secure-password-authentication/
 Description: Do not show password, during login, on an insecure channel (without SSL) (SHA-256 encryption).
-Version: 1.6.2
-Author: Enrico Rossomando (redsend)
-Author URI: http://mrred.it
+Version: 1.6.3
+Author: Enrico Rossomando (redsend || mrred || mrredsend)
+Author URI: http://www.mrred.it
 */
 
 /*  Copyright 2007-2011  Enrico Rossomando (email : redsend@gmail.com)
