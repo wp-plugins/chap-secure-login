@@ -3,7 +3,7 @@
 Plugin Name: Chap Secure Password Login
 Plugin URI: http://www.mrred.it/chap-secure-login-a-wordpress-plugin-for-secure-password-authentication/
 Description: Do not show password, during login, on an insecure channel (without SSL) (SHA-256 encryption).
-Version: 1.6.3
+Version: 1.6.4
 Author: Enrico Rossomando (redsend || mrred || mrredsend)
 Author URI: http://www.mrred.it
 */
@@ -49,8 +49,8 @@ function generate_javascript(){
 	
 	?>
 	
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/js/sha256.js" ></script>
-	<script language="javascript" type="text/javascript" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/js/md5.js" ></script>
+	<script language="javascript" type="text/javascript" src="<?php echo plugins_url( 'js/sha256.js', __FILE__ ); ?>" ></script>
+	<script language="javascript" type="text/javascript" src="<?php echo plugins_url( 'js/md5.js', __FILE__ ); ?>" ></script>
 	<script language="javascript" type="text/javascript">
 		function doCHAP (){
 		
@@ -85,7 +85,9 @@ function integrate_CHAP_login_form(){
 
 	?>
 	
-	<a style="border-width:0px;text-decoration:none;" href="http://www.mrred.it/chap-secure-login-a-wordpress-plugin-for-secure-password-authentication/" title="More info on Chap Secure Login Plugin for secure password authentication"><img style="border-width:0px;text-decoration:none;height:20px;width:20px;position:relative;float:left;margin-top:-75px;margin-left:70px;" alt="> Encryption password!" src="<?php echo get_option('siteurl');?>/wp-content/plugins/chap-secure-login/lock.png"></a>
+	<a style="border-width:0px;text-decoration:none;" href="http://www.mrred.it/chap-secure-login-a-wordpress-plugin-for-secure-password-authentication/" title="More info on Chap Secure Login Plugin for secure password authentication">
+		<img style="border-width:0px;text-decoration:none;height:20px;width:20px;position:relative;float:left;margin-top:-75px;margin-left:70px;" alt="> Encryption password!" src="<?php echo plugins_url( 'lock.png', __FILE__ ); ?>">
+	</a>
 	
 	<script language="javascript" type="text/javascript">
 		var form_login = document.getElementById('loginform');

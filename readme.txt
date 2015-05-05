@@ -3,8 +3,8 @@ Contributors: Enrico Rossomando
 Donate link: http://www.mrred.it/chap-secure-login-a-wordpress-plugin-for-secure-password-authentication/
 Tags: login, privacy, admin, password, security, chap, encrypt, crypt, md5, sha 
 Requires at least: 2.5
-Tested up to: 4.0
-Stable tag: 1.6.3
+Tested up to: 4.2
+Stable tag: 1.6.4
 
 Do not show password, during login, on an insecure channel (without SSL). Use a SHA-256 hash algorithm.
 
@@ -15,7 +15,7 @@ In the first login there will be an error, but don't worry is only a tecnical er
 If you want more details about this algorithm, check <a href="http://www.devarticles.com/c/a/JavaScript/Building-a-CHAP-Login-System-An-ObjectOriented-Approach/">"Building a CHAP Login System"</a>. 
 This is a zero-configuration plugin. 
 
-Enrico Rossomando (redsend || mrred || mrredsend) this is my blog about programming, gaming and startup > [mrred.it](http://www.mrred.it/ "Blog about programming, gaming and startup")
+Enrico Rossomando (redsend || mrred || mrredsend) this is my blog about programming, gaming and startup > [http://mrred.it](http://www.mrred.it/ "Blog about programming, gaming and startup")
 
 == Installation ==
 
@@ -24,6 +24,11 @@ Enrico Rossomando (redsend || mrred || mrredsend) this is my blog about programm
 3. After this, have fun!!
 
 == Change Log ==
+
+Version 1.6.4
+
+* Update compatibility up to wordpress 4.2
+* Fix JS and image path (thanks to Hisham K)
 
 Version 1.6.3
 
